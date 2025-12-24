@@ -182,6 +182,10 @@ light:
           name: "Scan"
           move_interval: 100ms
           scan_width: 3
+      - addressable_scan:
+          name: Scan - Fast
+          move_interval: 50ms   # Più veloce
+          scan_width: 3
       - addressable_twinkle:
           name: "Twinkle"
           twinkle_probability: 5%
