@@ -170,6 +170,10 @@ light:
           name: "Rainbow - Fast"
           width: 32
           speed: 50
+      - addressable_rainbow:
+          name: "Rainbow - Ultra Fast"
+          width: 32
+          speed: 10
       - pulse:
           name: "Pulse"
           transition_length: 1s
@@ -184,7 +188,7 @@ light:
           scan_width: 3
       - addressable_scan:
           name: Scan - Fast
-          move_interval: 50ms   # Più veloce
+          move_interval: 10ms
           scan_width: 3
       - addressable_twinkle:
           name: "Twinkle"
