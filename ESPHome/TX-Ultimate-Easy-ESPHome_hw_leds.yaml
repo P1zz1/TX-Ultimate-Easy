@@ -257,7 +257,61 @@ light:
       
             int pos = random_uint32() % it.size();
             it[pos] = Color::WHITE;
-            
+      - addressable_lambda:
+          name: "Lines Down"
+          update_interval: 16ms
+          lambda: |-
+            static int pos = 0;
+      
+            if (initial_run) {
+              pos = 0;
+              it.all() = Color::BLACK;
+              return;
+            }
+      
+            it.all().fade_to_black(40);
+      
+            // Lato sinistro: 15 -> 24 (alto -> basso)
+            int left_start = 15;
+            int left_end = 24;
+            int left_len = left_end - left_start + 1;
+      
+            // Lato destro: 31 -> 0 -> 8 (alto -> basso)
+            int right_indices[] = {31,0,1,2,3,4,5,6,7,8};
+            int right_len = 10;
+      
+            it[left_start + (pos % left_len)] = Color::WHITE;
+            it[right_indices[pos % right_len]] = Color::WHITE;
+      
+            pos++;
+      - addressable_lambda:
+          name: "Lines Up"
+          update_interval: 16ms
+          lambda: |-
+            static int pos = 0;
+      
+            if (initial_run) {
+              pos = 0;
+              it.all() = Color::BLACK;
+              return;
+            }
+      
+            it.all().fade_to_black(40);
+      
+            // Lato sinistro: 24 -> 15 (basso -> alto)
+            int left_start = 24;
+            int left_end = 15;
+            int left_len = left_start - left_end + 1;
+      
+            // Lato destro: 8 -> 0 -> 31 (basso -> alto)
+            int right_indices[] = {8,7,6,5,4,3,2,1,0,31};
+            int right_len = 10;
+      
+            it[left_start - (pos % left_len)] = Color::WHITE;
+            it[right_indices[pos % right_len]] = Color::WHITE;
+      
+            pos++;
+
     segments:
       - id: light_full
         from: 0
