@@ -191,6 +191,10 @@ light:
           transition_length: 1s
           update_interval: 1s
       - pulse:
+          name: "Pulse - Fast"
+          transition_length: 0.3s
+          update_interval: 0.3s
+      - pulse:
           name: "Pulse - Slow"
           transition_length: 2s
           update_interval: 2s
@@ -206,10 +210,18 @@ light:
           name: "Twinkle"
           twinkle_probability: 5%
           progress_interval: 4ms
+      - addressable_twinkle:
+          name: "Twinkle - Fast"
+          twinkle_probability: 20%
+          progress_interval: 1ms
       - addressable_random_twinkle:
           name: "Random Twinkle"
           twinkle_probability: 20%
           progress_interval: 32ms
+      - addressable_random_twinkle:
+          name: "Random Twinkle - Fast"
+          twinkle_probability: 40%
+          progress_interval: 8ms
       - addressable_fireworks:
           name: "Fireworks"
           update_interval: 32ms
