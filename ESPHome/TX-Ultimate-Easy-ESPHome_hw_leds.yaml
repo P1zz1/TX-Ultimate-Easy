@@ -182,18 +182,10 @@ light:
           name: "Rainbow - Fast"
           width: 32
           speed: 50
-      - addressable_rainbow:
-          name: "Rainbow - Ultra Fast"
-          width: 32
-          speed: 10
       - pulse:
           name: "Pulse"
           transition_length: 1s
           update_interval: 1s
-      - pulse:
-          name: "Pulse - Fast"
-          transition_length: 0.3s
-          update_interval: 0.3s
       - pulse:
           name: "Pulse - Slow"
           transition_length: 2s
@@ -204,24 +196,16 @@ light:
           scan_width: 3
       - addressable_scan:
           name: Scan - Fast
-          move_interval: 10ms
+          move_interval: 50ms   # Più veloce
           scan_width: 3
       - addressable_twinkle:
           name: "Twinkle"
           twinkle_probability: 5%
           progress_interval: 4ms
-      - addressable_twinkle:
-          name: "Twinkle - Fast"
-          twinkle_probability: 20%
-          progress_interval: 1ms
       - addressable_random_twinkle:
           name: "Random Twinkle"
           twinkle_probability: 20%
           progress_interval: 32ms
-      - addressable_random_twinkle:
-          name: "Random Twinkle - Fast"
-          twinkle_probability: 40%
-          progress_interval: 8ms
       - addressable_fireworks:
           name: "Fireworks"
           update_interval: 32ms
@@ -234,6 +218,26 @@ light:
           intensity: 5%
       - random:
           name: "Random"
+      - addressable_random_twinkle:
+          name: "Random Twinkle - Fast"
+          twinkle_probability: 40%
+          progress_interval: 8ms
+      - addressable_twinkle:
+          name: "Twinkle - Fast"
+          twinkle_probability: 20%
+          progress_interval: 1ms
+      - addressable_scan:
+          name: Scan - Fast
+          move_interval: 10ms
+          scan_width: 3
+      - pulse:
+          name: "Pulse - Fast"
+          transition_length: 0.3s
+          update_interval: 0.3s
+      - addressable_rainbow:
+          name: "Rainbow - Ultra Fast"
+          width: 32
+          speed: 100
     segments:
       - id: light_full
         from: 0
