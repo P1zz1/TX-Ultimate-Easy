@@ -112,10 +112,6 @@ light:
           transition_length: 1s
           update_interval: 1s
       - pulse:
-          name: "Pulse - Fast"
-          transition_length: 0.3s
-          update_interval: 0.3s
-      - pulse:
           name: "Pulse - Slow"
           transition_length: 2s
           update_interval: 2s
@@ -127,18 +123,10 @@ light:
           name: "Twinkle"
           twinkle_probability: 5%
           progress_interval: 4ms
-      - addressable_twinkle:
-          name: "Twinkle - Fast"
-          twinkle_probability: 20%
-          progress_interval: 1ms
       - addressable_random_twinkle:
           name: "Random Twinkle"
           twinkle_probability: 20%
           progress_interval: 32ms
-      - addressable_random_twinkle:
-          name: "Random Twinkle - Fast"
-          twinkle_probability: 40%
-          progress_interval: 8ms
       - addressable_fireworks:
           name: "Fireworks"
           update_interval: 32ms
@@ -238,6 +226,43 @@ light:
           name: "Rainbow - Ultra Fast"
           width: 32
           speed: 100
+      - addressable_lambda:
+          name: "Push Pulse"
+          update_interval: 16ms
+          lambda: |-
+            static uint8_t step = 0;
+      
+            if (initial_run) {
+              step = 0;
+              it.all() = Color::BLACK;
+              return;
+            }
+      
+            // Fade everything slightly
+            it.all().fade_to_black(40);
+      
+            // Bright pulse moving across the strip
+            it[step] = Color(255, 255, 255);
+      
+            step++;
+            if (step >= it.size()) {
+              step = 0;
+            }
+      - addressable_lambda:
+          name: "Push Spark"
+          update_interval: 12ms
+          lambda: |-
+            if (initial_run) {
+              it.all() = Color::BLACK;
+              return;
+            }
+      
+            it.all().fade_to_black(60);
+      
+            int pos = random_uint32() % it.size();
+            it[pos] = Color::WHITE;
+
+
     segments:
       - id: light_full
         from: 0
