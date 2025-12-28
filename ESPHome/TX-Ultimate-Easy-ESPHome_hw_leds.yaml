@@ -257,8 +257,7 @@ light:
       
             int pos = random_uint32() % it.size();
             it[pos] = Color::WHITE;
-
-
+            
     segments:
       - id: light_full
         from: 0
