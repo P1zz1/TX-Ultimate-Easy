@@ -238,7 +238,7 @@ light:
             it.all().fade_to_black(40);
 
             // Bright pulse moving across the strip
-            it[step] = Color(255, 255, 255);
+            it[step] = current_color;
 
             step++;
             if (step >= it.size()) {
@@ -256,7 +256,7 @@ light:
             it.all().fade_to_black(60);
 
             int pos = random_uint32() % it.size();
-            it[pos] = Color::WHITE;
+            it[pos] = current_color;
       - addressable_lambda:
           name: Lines Down
           update_interval: 16ms
@@ -280,8 +280,8 @@ light:
             int right_indices[] = {31,0,1,2,3,4,5,6,7,8};
             int right_len = 10;
 
-            it[left_start + (pos % left_len)] = Color::WHITE;
-            it[right_indices[pos % right_len]] = Color::WHITE;
+            it[left_start + (pos % left_len)] = current_color;
+            it[right_indices[pos % right_len]] = current_color;
 
             pos++;
       - addressable_lambda:
@@ -307,8 +307,8 @@ light:
             int right_indices[] = {8,7,6,5,4,3,2,1,0,31};
             int right_len = 10;
 
-            it[left_start - (pos % left_len)] = Color::WHITE;
-            it[right_indices[pos % right_len]] = Color::WHITE;
+            it[left_start - (pos % left_len)] = current_color;
+            it[right_indices[pos % right_len]] = current_color;
 
             pos++;
       - addressable_lambda:
