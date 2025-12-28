@@ -235,7 +235,7 @@ light:
             }
 
             // Fade everything slightly
-            it.all().fade_to_black(40);
+            it.all().fade_to_black(80);
 
             // Bright pulse moving across the strip
             it[step] = current_color;
@@ -253,7 +253,7 @@ light:
               return;
             }
 
-            it.all().fade_to_black(60);
+            it.all().fade_to_black(80);
 
             int pos = random_uint32() % it.size();
             it[pos] = current_color;
@@ -265,11 +265,11 @@ light:
 
             if (initial_run) {
               pos = 0;
-              it.all() = Color::BLACK;
+              it.all() = Color(0, 0, 0);
               return;
             }
 
-            it.all().fade_to_black(40);
+            it.all().fade_to_black(80);
 
             // Lato sinistro: 15 -> 24 (alto -> basso)
             int left_start = 15;
@@ -292,11 +292,11 @@ light:
 
             if (initial_run) {
               pos = 0;
-              it.all() = Color::BLACK;
+              it.all() = Color(0, 0, 0);
               return;
             }
 
-            it.all().fade_to_black(40);
+            it.all().fade_to_black(80);
 
             // Lato sinistro: 24 -> 15 (basso -> alto)
             int left_start = 24;
